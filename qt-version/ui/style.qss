@@ -1,0 +1,191 @@
+/* Тёмная финтех-тема. Цвета:
+   фон #0F1115, панели #171A21, рамки #262B36, текст #E6E8EB, приглушённый #8B93A1,
+   акцент #3B82F6, рост #16C784, падение #EA3943 */
+
+QMainWindow, AuthWindow {
+    background-color: #0F1115;
+}
+
+QWidget {
+    color: #E6E8EB;
+}
+
+QLabel {
+    background: transparent;
+}
+
+QLabel#appTitle {
+    font-size: 18pt;
+    font-weight: 700;
+}
+
+QLabel#muted {
+    color: #8B93A1;
+}
+
+QLabel#hint {
+    color: #8B93A1;
+    background-color: #1B2230;
+    border: 1px solid #263048;
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-top: 8px;
+}
+
+QLabel#sectionTitle {
+    color: #8B93A1;
+    font-weight: 600;
+    padding: 4px 2px;
+}
+
+QLabel#formMessage[kind="error"] {
+    color: #EA3943;
+}
+
+QLabel#formMessage[kind="info"] {
+    color: #16C784;
+}
+
+QFrame#card, QFrame#panel {
+    background-color: #171A21;
+    border: 1px solid #262B36;
+    border-radius: 10px;
+}
+
+QLineEdit {
+    background-color: #0F1115;
+    border: 1px solid #2A303C;
+    border-radius: 6px;
+    padding: 7px 9px;
+    selection-background-color: #3B82F6;
+}
+
+QLineEdit:focus {
+    border-color: #3B82F6;
+}
+
+QPushButton {
+    background-color: #222733;
+    border: 1px solid #2A303C;
+    border-radius: 6px;
+    padding: 7px 14px;
+}
+
+QPushButton:hover {
+    background-color: #2A3040;
+}
+
+QPushButton:pressed {
+    background-color: #1B1F27;
+}
+
+QPushButton#primary {
+    background-color: #3B82F6;
+    border-color: #3B82F6;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+QPushButton#primary:hover {
+    background-color: #2F6FDB;
+}
+
+QPushButton#link {
+    background: transparent;
+    border: none;
+    color: #3B82F6;
+    padding: 2px;
+}
+
+QPushButton#link:hover {
+    color: #6AA1FF;
+}
+
+QTableView {
+    background-color: #171A21;
+    alternate-background-color: #1B1F27;
+    border: 1px solid #262B36;
+    border-radius: 8px;
+    selection-background-color: #1F3A66;
+    selection-color: #E6E8EB;
+}
+
+/* Редактор цели внутри ячейки: без крупных отступов, иначе текст обрезается по высоте строки */
+QTableView QLineEdit {
+    padding: 0 6px;
+    border-radius: 0;
+}
+
+QHeaderView::section {
+    background-color: #171A21;
+    color: #8B93A1;
+    border: none;
+    border-bottom: 1px solid #262B36;
+    padding: 6px 8px;
+    font-weight: 600;
+}
+
+QTableCornerButton::section {
+    background-color: #171A21;
+    border: none;
+}
+
+QListWidget {
+    background-color: #171A21;
+    border: 1px solid #262B36;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+QSplitter::handle {
+    background-color: #0F1115;
+}
+
+QSplitter::handle:vertical {
+    height: 8px;
+}
+
+QSplitter::handle:horizontal {
+    width: 8px;
+}
+
+QStatusBar {
+    background-color: #0F1115;
+    color: #8B93A1;
+}
+
+QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #2A303C;
+    border-radius: 5px;
+    min-height: 24px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QMenu {
+    background-color: #171A21;
+    border: 1px solid #262B36;
+    padding: 4px;
+}
+
+QMenu::item {
+    padding: 6px 18px;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    background-color: #1F3A66;
+}
+
+QToolTip {
+    background-color: #171A21;
+    color: #E6E8EB;
+    border: 1px solid #262B36;
+}

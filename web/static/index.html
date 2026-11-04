@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Price Alert</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='%233B82F6'/%3E%3Cpolyline points='12,20 26,34 36,26 52,46' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+
+<!-- Вход / регистрация / код -->
+<section id="auth" class="auth" hidden>
+  <div class="card">
+    <div class="brand">
+      <span class="logo"></span>
+      <div>
+        <h1>Price Alert</h1>
+        <p class="muted">Уведомления о ценах на Binance</p>
+      </div>
+    </div>
+    <p class="hint">Демо-вход: <b>demo</b> / <b>demo123</b>, код подтверждения <b>123456</b></p>
+
+    <form id="login-form" class="page" novalidate>
+      <input name="username" placeholder="Имя пользователя" autocomplete="username">
+      <input name="password" type="password" placeholder="Пароль" autocomplete="current-password">
+      <p class="msg"></p>
+      <button class="primary" type="submit">Войти</button>
+      <button class="link" type="button" data-go="register-form">Нет аккаунта? Зарегистрироваться</button>
+    </form>
+
+    <form id="register-form" class="page" novalidate hidden>
+      <input name="username" placeholder="Имя пользователя" autocomplete="username">
+      <input name="email" type="email" placeholder="Email" autocomplete="email">
+      <input name="password" type="password" placeholder="Пароль, не короче 6 символов" autocomplete="new-password">
+      <input name="password2" type="password" placeholder="Повторите пароль" autocomplete="new-password">
+      <p class="msg"></p>
+      <button class="primary" type="submit">Создать аккаунт</button>
+      <button class="link" type="button" data-go="login-form">Уже есть аккаунт? Войти</button>
+    </form>
+
+    <form id="code-form" class="page" novalidate hidden>
+      <p id="code-info" class="muted"></p>
+      <input name="code" placeholder="Код из письма" inputmode="numeric" maxlength="8" autocomplete="one-time-code">
+      <p class="msg"></p>
+      <button class="primary" type="submit">Подтвердить</button>
+      <button class="link" type="button" data-go="login-form">Назад ко входу</button>
+    </form>
+  </div>
+</section>
+
+<!-- Дашборд -->
+<section id="dashboard" hidden>
+  <header class="topbar">
+    <div class="brand small"><span class="logo"></span><b>Price Alert</b></div>
+    <div class="user">
+      <span id="username" class="muted"></span>
+      <button id="logout" type="button">Выйти</button>
+    </div>
+  </header>
+
+  <form id="add-form" class="panel add" novalidate>
+    <input name="symbol" placeholder="Тикер, например BTCUSDT" maxlength="20" autocomplete="off" spellcheck="false">
+    <input name="price" placeholder="Целевая цена" inputmode="decimal" autocomplete="off">
+    <button class="primary" type="submit">Добавить</button>
+    <p class="msg"></p>
+    <button id="remove" type="button">Удалить выбранный</button>
+  </form>
+
+  <div class="panel table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Тикер</th>
+          <th class="num" title="Двойной щелчок по ячейке — изменить цель">Цель</th>
+          <th class="num">Цена</th>
+          <th class="num">Δ до цели</th>
+          <th>Активен</th>
+        </tr>
+      </thead>
+      <tbody id="assets"></tbody>
+    </table>
+    <p id="empty" class="empty muted">Портфель пуст — добавьте первый тикер</p>
+  </div>
+
+  <div class="bottom">
+    <div class="panel chart-box">
+      <div class="chart-head">
+        <b id="chart-title">Выберите актив в таблице</b>
+        <span class="legend"><i class="l-price"></i>Цена <i class="l-target"></i>Цель</span>
+      </div>
+      <div class="chart-area"><canvas id="chart"></canvas></div>
+    </div>
+    <div class="panel log-box">
+      <div class="section-title">Журнал алертов</div>
+      <ul id="log"></ul>
+    </div>
+  </div>
+
+  <footer id="status" class="muted"></footer>
+</section>
+
+<div id="toasts"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
